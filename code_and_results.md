@@ -342,7 +342,138 @@ def peakiness(waves, **kwargs):
     peaky = np.apply_along_axis(by_row, 1, waves1, 'peaky')
 
     return peaky
-``` 
+
+def unpack_gpod(variable):
+
+    from scipy.interpolate import interp1d
+
+    time_1hz=SAR_data.variables['time_01'][:]
+    time_20hz=SAR_data.variables['time_20_ku'][:]
+    time_20hzC = SAR_data.variables['time_20_c'][:]
+
+    out=(SAR_data.variables[variable][:]).astype(float)  # convert from integer array to float.
+
+    #if ma.is_masked(dataset.variables[variable][:]) == True:
+    #print(variable,'is masked. Removing mask and replacing masked values with nan')
+    out=np.ma.filled(out, np.nan)
+
+    if len(out)==len(time_1hz):
+
+        print(variable,'is 1hz. Expanding to 20hz...')
+        out = interp1d(time_1hz,out,fill_value="extrapolate")(time_20hz)
+
+    if len(out)==len(time_20hzC):
+        print(variable, 'is c band, expanding to 20hz ku band dimension')
+        out = interp1d(time_20hzC,out,fill_value="extrapolate")(time_20hz)
+    return out
+
+
+#=========================================================================================================
+#=========================================================================================================
+#=========================================================================================================
+
+def calculate_SSD(RIP):
+
+    from scipy.optimize import curve_fit
+    # from scipy import asarray as ar,exp
+    from numpy import asarray as ar, exp
+
+    do_plot='Off'
+
+    def gaussian(x,a,x0,sigma):
+            return a * np.exp(-(x - x0)**2 / (2 * sigma**2))
+
+    SSD=np.zeros(np.shape(RIP)[0])*np.nan
+    x=np.arange(np.shape(RIP)[1])
+
+    for i in range(np.shape(RIP)[0]):
+
+        y=np.copy(RIP[i])
+        y[(np.isnan(y)==True)]=0
+
+        if 'popt' in locals():
+            del(popt,pcov)
+
+        SSD_calc=0.5*(np.sum(y**2)*np.sum(y**2)/np.sum(y**4))
+        #print('SSD calculated from equation',SSD)
+
+        #n = len(x)
+        mean_est = sum(x * y) / sum(y)
+        sigma_est = np.sqrt(sum(y * (x - mean_est)**2) / sum(y))
+        #print('est. mean',mean,'est. sigma',sigma_est)
+
+        try:
+            popt,pcov = curve_fit(gaussian, x, y, p0=[max(y), mean_est, sigma_est],maxfev=10000)
+        except RuntimeError as e:
+            print("Gaussian SSD curve-fit error: "+str(e))
+            #plt.plot(y)
+            #plt.show()
+
+        except TypeError as t:
+            print("Gaussian SSD curve-fit error: "+str(t))
+
+        if do_plot=='ON':
+
+            plt.plot(x,y)
+            plt.plot(x,gaussian(x,*popt),'ro:',label='fit')
+            plt.axvline(popt[1])
+            plt.axvspan(popt[1]-popt[2], popt[1]+popt[2], alpha=0.15, color='Navy')
+            plt.show()
+
+            print('popt',popt)
+            print('curve fit SSD',popt[2])
+
+        if 'popt' in locals():
+            SSD[i]=abs(popt[2])
+
+
+    return SSD
+```
+```
+path = '/content/drive/MyDrive/AL4EO/W4/Unsupervised Learning/'
+SAR_file = 'S3A_SR_2_LAN_SI_20190307T005808_20190307T012503_20230527T225016_1614_042_131______LN3_R_NT_005.SEN3'
+SAR_data = Dataset(path + SAR_file + '/enhanced_measurement.nc')
+
+SAR_lat = unpack_gpod('lat_20_ku')
+SAR_lon = unpack_gpod('lon_20_ku')
+waves   = unpack_gpod('waveform_20_ku')
+sig_0   = unpack_gpod('sig0_water_20_ku')
+RIP     = unpack_gpod('rip_20_ku')
+flag = unpack_gpod('surf_type_class_20_ku')
+
+# Filter out bad data points using criteria (here, lat >= -99999)
+find = np.where(SAR_lat >= -99999)
+SAR_lat = SAR_lat[find]
+SAR_lon = SAR_lon[find]
+waves   = waves[find]
+sig_0   = sig_0[find]
+RIP     = RIP[find]
+
+# Calculate additional features
+PP = peakiness(waves)
+SSD = calculate_SSD(RIP)
+
+# Convert to numpy arrays (if not already)
+sig_0_np = np.array(sig_0)
+PP_np    = np.array(PP)
+SSD_np   = np.array(SSD)
+
+# Create data matrix
+data = np.column_stack((sig_0_np, PP_np, SSD_np))
+
+# Standardize the data
+scaler = StandardScaler()
+data_normalized = scaler.fit_transform(data)
+```
+
+ 
+
+
+
+
+
+
+
 
 
 
