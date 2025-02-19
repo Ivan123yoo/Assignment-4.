@@ -15,20 +15,34 @@ This section of the notebook demonstrates the use of K-means clustering on synth
 
 Before running the clustering, ensure that the necessary Python library `netCDF4` is installed. This library is essential for handling scientific data formats:
 
-```bash
-!pip install netCDF4
 
 
-## Example of K-means Clustering
+# Python code for K-means clustering
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+import numpy as np
 
-This example demonstrates how to apply K-means clustering to a simple synthetic dataset. The code performs the following steps:
+# Sample data
+X = np.random.rand(100, 2)
 
-### Import Libraries
+# K-means model
+kmeans = KMeans(n_clusters=4)
+kmeans.fit(X)
+y_kmeans = kmeans.predict(X)
 
-- `KMeans` from `sklearn.cluster`: This is used for applying the K-means clustering algorithm.
-- `matplotlib.pyplot` for plotting: Helps in visualizing the data points and the results of clustering.
-- `numpy`: Used for generating sample data and performing high-level mathematical functions.
+# Plotting
+plt.scatter(X[:, 0], X[:, 1], c=y_kmeans, cmap='viridis')
+centers = kmeans.cluster_centers_
+plt.scatter(centers[:, 0], centers[:, 1], c='black', s=200, alpha=0.5)
+plt.show()
 
-### Generate Sample Data
+import matplotlib.pyplot as plt
 
+# Your clustering code and plotting commands here
+plt.scatter(X[:, 0], X[:, 1], c=y_kmeans, cmap='viridis')
+centers = kmeans.cluster_centers_
+plt.scatter(centers[:, 0], centers[:, 1], c='black', s=200, alpha=0.5)
 
+# Save the plot as an image file
+plt.savefig('kmeans_clustering_output.png')
+plt.show()
