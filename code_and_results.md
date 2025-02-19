@@ -262,5 +262,18 @@ Below is the result of applying **GMM clustering** to the Sentinel-2 bands:
 ![GMM Clustering Output](https://github.com/Ivan123yoo/Assignment-4./blob/main/images/GMM%20Clustering.png?raw=true)
 
 
+### **4. Interpretation of Results**
+
+The **GMM clustering output** on Sentinel-2 bands represents the classification of the satellite image into different surface types. The key observations from the result are:
+
+- The **color-coded regions** correspond to different clusters identified by the **Gaussian Mixture Model (GMM)** based on reflectance values from the Sentinel-2 imagery.
+- The **dark purple region (left side)** represents areas where the algorithm could not classify data due to missing or low-reflectance values.
+- The **yellow and green regions** indicate different terrain features, with the **yellow areas likely corresponding to highly reflective surfaces** such as ice or snow-covered regions.
+- The **blue-green areas** might represent water bodies or darker terrain, which have lower reflectance in the selected band.
+- The **gradual color transition** shows how GMM captures soft boundaries between different surface types, unlike K-Means which enforces hard clustering.
+
+This result is useful for **remote sensing applications**, helping to distinguish between features such as **ice, open water, and land** using unsupervised learning.
+
+
 
 
