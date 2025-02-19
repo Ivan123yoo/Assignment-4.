@@ -177,5 +177,9 @@ plt.show()
 del kmeans, labels, band_data, band_stack, valid_data_mask, X, labels_image
 ``` 
 
-![K-means Image Classification]([PUT_YOUR_IMAGE_URL_HERE](https://github.com/Ivan123yoo/Assignment-4./blob/main/images/K%20means%20clustering%20on%20sentinel%202%20bands.png?raw=true))
+## **Clustering Output Image**
+Below is the K-Means clustering result applied to Sentinel-2 bands:
+
+![K-means Classification Output](https://github.com/Ivan123yoo/Assignment-4./blob/main/images/K%20means%20clustering%20on%20sentinel%202%20bands.png?raw=true)
+
 
