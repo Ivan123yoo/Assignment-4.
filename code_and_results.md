@@ -27,7 +27,7 @@ The following libraries are used:
 - `matplotlib.pyplot` : For plotting the clustering results.
 - `numpy` : For generating random sample data.
 
-```python ![kmeans_clustering_output](https://github.com/user-attachments/assets/b1d7c9e1-7b9f-4648-b6fe-fe1fb29a4323)
+```python 
 # Python code for K-means clustering
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
