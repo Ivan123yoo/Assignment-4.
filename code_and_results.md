@@ -1,4 +1,4 @@
-![kmeans_clustering_output](https://github.com/user-attachments/assets/b1d7c9e1-7b9f-4648-b6fe-fe1fb29a4323)
+
 
 first we start of with mounting
 
