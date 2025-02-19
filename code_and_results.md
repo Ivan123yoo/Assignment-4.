@@ -1,33 +1,15 @@
+# K-means Clustering Example
 
+This section of the notebook demonstrates the use of **K-means clustering** to classify randomly generated data into four clusters.
 
-first we start of with mounting
+## 1. Import Necessary Libraries
 
-from google.colab import drive
-drive.mount('/content/drive')
-
-then we install rasterio
-
-pip install rasterio
-
-## K-means Clustering Example
-
-This section of the notebook demonstrates the use of K-means clustering on synthetically generated data to understand the algorithm's application.
-
-### Dependencies Installation
-
-Before running the clustering, ensure that the necessary Python library `netCDF4` is installed. This library is essential for handling scientific data formats:
-
-
-## **K-means Clustering Example**
-This section demonstrates the use of **K-means clustering** to classify randomly generated data into four clusters.
-
-### **1. Import Necessary Libraries**
 The following libraries are used:
 - `sklearn.cluster.KMeans` : For performing K-means clustering.
 - `matplotlib.pyplot` : For plotting the clustering results.
 - `numpy` : For generating random sample data.
 
-```python 
+```python
 # Python code for K-means clustering
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
@@ -48,27 +30,4 @@ plt.scatter(centers[:, 0], centers[:, 1], c='black', s=200, alpha=0.5)
 
 # Save the plot
 plt.savefig('images/kmeans_clustering_output.png')
-plt.show() '''
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+plt.show()
