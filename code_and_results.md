@@ -17,15 +17,14 @@ This section of the notebook demonstrates the use of K-means clustering on synth
 Before running the clustering, ensure that the necessary Python library `netCDF4` is installed. This library is essential for handling scientific data formats:
 
 
-# K-means Clustering Example
-
+## **K-means Clustering Example**
 This section demonstrates the use of **K-means clustering** to classify randomly generated data into four clusters.
 
-## **1. Import Necessary Libraries**
+### **1. Import Necessary Libraries**
 The following libraries are used:
-- `sklearn.cluster.KMeans`: For performing K-means clustering.
-- `matplotlib.pyplot`: For plotting the clustering results.
-- `numpy`: For generating random sample data.
+- `sklearn.cluster.KMeans` : For performing K-means clustering.
+- `matplotlib.pyplot` : For plotting the clustering results.
+- `numpy` : For generating random sample data.
 
 ```python
 # Python code for K-means clustering
@@ -49,12 +48,4 @@ plt.scatter(centers[:, 0], centers[:, 1], c='black', s=200, alpha=0.5)
 # Save the plot
 plt.savefig('images/kmeans_clustering_output.png')
 plt.show()
-
-
-####  Insert Image Below the Code**
-```markdown
-## **Clustering Output Image**
-Below is the K-means clustering result:
-
-![K-means Clustering Output](images/kmeans_clustering_output.png)
 
