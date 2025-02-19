@@ -50,11 +50,7 @@ plt.scatter(centers[:, 0], centers[:, 1], c='black', s=200, alpha=0.5)
 plt.savefig('images/kmeans_clustering_output.png')
 plt.show()
 
-## **Clustering Output Image**
-Below is the K-means clustering result:
-
-![K-means Clustering Output](./images/kmeans_clustering_output.png)
-
+![K-means Clustering Output](https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPOSITORY/main/images/kmeans_clustering_output.png)
 
 
 
