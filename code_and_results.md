@@ -54,7 +54,6 @@ plt.show()
 ## **Clustering Output Image**
 Below is the K-means clustering result:
 
-![K-means Clustering Output]([PASTE_THE_COPIED_LINK_HERE](https://github.com/Ivan123yoo/Assignment-4./blob/main/images/kmeans_clustering_output.png?raw=true))
 
 
 
