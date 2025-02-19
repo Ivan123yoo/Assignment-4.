@@ -484,8 +484,61 @@ The SSD function analyzes the spread of waveform energy by fitting a Gaussian mo
 These preprocessing functions play a crucial role in preparing Sentinel-3 altimetry data for classification tasks. Peakiness quantifies waveform sharpness, GPOD variable extraction ensures data consistency, and SSD provides insight into waveform spread. Together, these steps refine the dataset, making it suitable for unsupervised learning models that classify sea ice and open water.
 
 
+There are some NaN values in the dataset so one way to deal with this is to delete them.
+
+```
+# Remove any rows that contain NaN values
+nan_count = np.isnan(data_normalized).sum()
+print(f"Number of NaN values in the array: {nan_count}")
+
+data_cleaned = data_normalized[~np.isnan(data_normalized).any(axis=1)]
+
+mask = ~np.isnan(data_normalized).any(axis=1)
+waves_cleaned = np.array(waves)[mask]
+flag_cleaned = np.array(flag)[mask]
+
+data_cleaned = data_cleaned[(flag_cleaned==1)|(flag_cleaned==2)]
+waves_cleaned = waves_cleaned[(flag_cleaned==1)|(flag_cleaned==2)]
+flag_cleaned = flag_cleaned[(flag_cleaned==1)|(flag_cleaned==2)]
+```
+
+Now, let's proceed with running the GMM model as usual. You can also replace it with K-Means or any other model of your choice.
+
+```
+gmm = GaussianMixture(n_components=2, random_state=0)
+gmm.fit(data_cleaned)
+clusters_gmm = gmm.predict(data_cleaned)
+```
+We can also examine the number of data points in each class of the clustering prediction.
+
+```
+unique, counts = np.unique(clusters_gmm, return_counts=True)
+class_counts = dict(zip(unique, counts))
+print("Cluster counts:", class_counts)
+```
+
+We can plot the mean waveform of each class.
+
+```
+# mean and standard deviation for all echoes
+mean_ice = np.mean(waves_cleaned[clusters_gmm==0],axis=0)
+std_ice = np.std(waves_cleaned[clusters_gmm==0], axis=0)
+
+plt.plot(mean_ice, label='ice')
+plt.fill_between(range(len(mean_ice)), mean_ice - std_ice, mean_ice + std_ice, alpha=0.3)
 
 
+mean_lead = np.mean(waves_cleaned[clusters_gmm==1],axis=0)
+std_lead = np.std(waves_cleaned[clusters_gmm==1], axis=0)
+
+plt.plot(mean_lead, label='lead')
+plt.fill_between(range(len(mean_lead)), mean_lead - std_lead, mean_lead + std_lead, alpha=0.3)
+
+plt.title('Plot of mean and standard deviation for each class')
+plt.legend()
+```
+
+    
 
 
 
