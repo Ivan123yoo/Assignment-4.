@@ -1,3 +1,5 @@
+![kmeans_clustering_output](https://github.com/user-attachments/assets/0fefd2c3-6419-40b1-9c92-35b6fbea6ae7)
+![kmeans_clustering_output](https://github.com/user-attachments/assets/6adfa5e2-3112-4427-b94b-215fd7e01ffd)
 first we start of with mounting
 
 from google.colab import drive
