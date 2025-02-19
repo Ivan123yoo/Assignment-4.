@@ -108,3 +108,66 @@ Below is the **Gaussian Mixture Model (GMM) clustering result**:
 ![Gaussian Mixture Model Output](https://raw.githubusercontent.com/Ivan123yoo/Assignment-4./main/images/Gaussian%20mixture%20model.png)
 
 
+
+Image Classification using K-Means Clustering
+
+This section of the repository demonstrates how unsupervised learning methods, specifically K-Means clustering, can be used for image classification. The focus is on distinguishing between sea ice and open water in Sentinel-2 satellite imagery by clustering pixel values into different groups.
+
+1. Import Necessary Libraries
+
+The following libraries are used:
+
+rasterio: For reading Sentinel-2 satellite imagery.
+numpy: For handling numerical operations and array manipulation.
+sklearn.cluster.KMeans: For applying the K-Means clustering algorithm.
+matplotlib.pyplot: For visualizing the classification results.
+
+```
+import rasterio
+import numpy as np
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+
+# Define file paths for Sentinel-2 image bands
+base_path = "/content/drive/MyDrive/AI4EO/W4/Unsupervised Learning/S2A_MSIL1C_20190301T235611_N0207_R116_T01WCU_20190302T014622.SAFE/GRANULE/L1C_T01WCU_A019275_20190301T235610/IMG_DATA/"
+bands_paths = {
+    'B4': base_path + 'T01WCU_20190301T235611_B04.jp2',
+    'B3': base_path + 'T01WCU_20190301T235611_B03.jp2',
+    'B2': base_path + 'T01WCU_20190301T235611_B02.jp2'
+}
+
+# Read and stack the band images
+band_data = []
+for band in ['B4']:
+    with rasterio.open(bands_paths[band]) as src:
+        band_data.append(src.read(1))
+
+# Stack bands and create a mask for valid data (non-zero values in all bands)
+band_stack = np.dstack(band_data)
+valid_data_mask = np.all(band_stack > 0, axis=2)
+
+# Reshape for K-means, only including valid data
+X = band_stack[valid_data_mask].reshape((-1, 1))
+
+# Apply K-means clustering with 2 clusters (sea ice vs. open water)
+kmeans = KMeans(n_clusters=2, random_state=0).fit(X)
+labels = kmeans.labels_
+
+# Create an empty array for the result, filled with a no-data value (e.g., -1)
+labels_image = np.full(band_stack.shape[:2], -1, dtype=int)
+
+# Place cluster labels in the locations corresponding to valid data
+labels_image[valid_data_mask] = labels
+
+# Plotting the classification result
+plt.imshow(labels_image, cmap='viridis')
+plt.title('K-means Clustering on Sentinel-2 Bands')
+plt.colorbar(label='Cluster Label')
+plt.show()
+
+# Free up memory
+del kmeans, labels, band_data, band_stack, valid_data_mask, X, labels_image
+```
+
+![K-means Image Classification](PUT_YOUR_IMAGE_URL_HERE)
+
