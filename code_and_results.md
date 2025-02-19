@@ -183,3 +183,17 @@ Below is the K-Means clustering result applied to Sentinel-2 bands:
 ![K-means Classification Output](https://github.com/Ivan123yoo/Assignment-4./blob/main/images/K%20means%20clustering%20on%20sentinel%202%20bands.png?raw=true)
 
 
+### **Explanation of the Results**
+
+The displayed image represents the **K-Means clustering classification applied to Sentinel-2 bands**, where the algorithm has grouped pixels into distinct clusters based on their spectral values.
+
+#### **What this shows:**
+The image highlights two different clusters (represented by different colors), distinguishing features within the Sentinel-2 satellite imagery. This clustering approach helps in identifying **variations in surface features**, such as differentiating between **sea ice and leads** in the dataset.
+
+#### **Why this is useful:**
+- It provides an **unsupervised classification** method to analyze remote sensing imagery.
+- Helps in **automating feature detection** in satellite images, reducing manual interpretation.
+- Supports further analysis for **environmental monitoring** and **climate studies**.
+
+
+
