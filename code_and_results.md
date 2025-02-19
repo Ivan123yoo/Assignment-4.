@@ -61,3 +61,45 @@ The clustering algorithm effectively groups similar data points together based o
 The distribution of points suggests how K-means finds structure within the data, even without prior knowledge of any labels.
 This visualization demonstrates how unsupervised learning can be used to categorize unlabelled data based on inherent patterns.
 
+
+
+## Gaussian Mixture Model (GMM) Clustering Example
+
+This section introduces **Gaussian Mixture Models (GMM)**, which are a probabilistic model for representing normally distributed subpopulations within an overall dataset. Unlike K-means clustering, which assigns each data point to a single cluster, **GMM provides a probability-based clustering approach**, meaning each point has a probability of belonging to multiple clusters. This makes it **more flexible** for identifying clusters with different shapes and variances.
+
+GMM is particularly useful in scenarios where:
+- **Soft Clustering is Required**: Instead of a hard assignment like K-means, GMM provides probability estimates for each cluster.
+- **Cluster Shape Flexibility**: GMM allows for elliptical and complex cluster structures, unlike K-means which assumes spherical clusters.
+
+### **1. Import Necessary Libraries**
+The following libraries are used:
+- `sklearn.mixture.GaussianMixture` : For performing Gaussian Mixture Model clustering.
+- `matplotlib.pyplot` : For plotting the clustering results.
+- `numpy` : For generating random sample data.
+
+```python
+# Import required libraries
+from sklearn.mixture import GaussianMixture
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Generate random sample data
+X = np.random.rand(100, 2)
+
+# Apply Gaussian Mixture Model clustering with 3 components
+gmm = GaussianMixture(n_components=3)
+gmm.fit(X)
+y_gmm = gmm.predict(X)
+
+# Plot the results
+plt.scatter(X[:, 0], X[:, 1], c=y_gmm, cmap='viridis')
+centers = gmm.means_
+plt.scatter(centers[:, 0], centers[:, 1], c='black', s=200, alpha=0.5)
+plt.title('Gaussian Mixture Model')
+
+# Save the plot
+plt.savefig('images/Gaussian_mixture_model.png')
+plt.show()
+```
+
+
