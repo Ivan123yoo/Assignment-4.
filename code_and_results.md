@@ -54,3 +54,10 @@ Below is the K-means clustering result:
 
 ![K-means Clustering Output](https://github.com/Ivan123yoo/Assignment-4./blob/main/images/kmeans_clustering_output.png?raw=true)
 
+The output image displays the K-means clustering results applied to a randomly generated dataset. The data points are grouped into four distinct clusters, each represented by a different color.
+
+The black circles in the plot indicate the centroids of the clusters, which are the computed centers of each group.
+The clustering algorithm effectively groups similar data points together based on their spatial proximity.
+The distribution of points suggests how K-means finds structure within the data, even without prior knowledge of any labels.
+This visualization demonstrates how unsupervised learning can be used to categorize unlabelled data based on inherent patterns.
+
