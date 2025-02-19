@@ -538,6 +538,20 @@ plt.title('Plot of mean and standard deviation for each class')
 plt.legend()
 ```
 
+## Clustering Output Image
+
+Below is the clustering result:
+
+![Clustering Output](https://github.com/Ivan123yoo/Assignment-4./blob/main/images/Unknown.png?raw=true)
+
+### **Mean and Standard Deviation of Waveforms for Each Class**
+The plot above visualizes the mean waveform along with the standard deviation for each class identified in the clustering process. The two classes, "ice" and "lead," are represented by distinct colors.
+
+- The **solid lines** show the average waveform shape for each class.
+- The **shaded regions** indicate the variability within each class, represented by the standard deviation.
+
+This visualization helps in understanding the differences between waveforms associated with ice and lead, showing distinct peaks and variations that contribute to their classification.
+
     
 
 
