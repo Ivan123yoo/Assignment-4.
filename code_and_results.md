@@ -102,4 +102,9 @@ plt.savefig('images/Gaussian_mixture_model.png')
 plt.show()
 ```
 
+## **Clustering Output Image**
+Below is the **Gaussian Mixture Model (GMM) clustering result**:
+
+![Gaussian Mixture Model Output](https://raw.githubusercontent.com/Ivan123yoo/Assignment-4./main/images/Gaussian%20mixture%20model.png)
+
 
