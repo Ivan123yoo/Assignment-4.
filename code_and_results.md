@@ -274,6 +274,76 @@ The **GMM clustering output** on Sentinel-2 bands represents the classification 
 
 This result is useful for **remote sensing applications**, helping to distinguish between features such as **ice, open water, and land** using unsupervised learning.
 
+# Altimetry Classification
+
+Now, let's explore the application of **unsupervised methods** to **altimetry classification** tasks, focusing specifically on distinguishing between **sea ice and leads** in the **Sentinel-3 altimetry dataset**.
+
+Before we can apply classification methods, we must **preprocess the data** by extracting meaningful features. The following functions are used for this purpose.
+
+---
+
+## **1. Preprocessing Functions for Feature Extraction**
+
+These functions **prepare the dataset** by computing waveform properties, ensuring proper interpolation of variables, and calculating statistical features.
+
+### **Peakiness Calculation**
+This function determines the **peakiness of waveform signals**, helping differentiate between different surface types in the Sentinel-3 dataset.
+
+```python
+from netCDF4 import Dataset
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.interpolate import griddata
+import numpy.ma as ma
+import glob
+from matplotlib.patches import Polygon
+import scipy.spatial as spatial
+from scipy.spatial import KDTree
+from sklearn.cluster import KMeans, DBSCAN
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
+from sklearn.mixture import GaussianMixture
+from scipy.cluster.hierarchy import linkage, fcluster
+
+def peakiness(waves, **kwargs):
+    "Finds peakiness of waveforms."
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+    print("Running peakiness function...")
+
+    size = np.shape(waves)[0]
+    waves1 = np.copy(waves)
+
+    if waves1.ndim == 1:
+        print('Only one waveform in file')
+        waves1 = waves1.reshape(1, np.size(waves1))
+
+    def by_row(waves, *args):
+        "Calculate peakiness for each waveform"
+        maximum = np.nanmax(waves)
+        if maximum > 0:
+            maximum_bin = np.where(waves == maximum)[0][0]
+            waves_128 = waves[maximum_bin-50:maximum_bin+78]
+            noise_floor = np.nanmean(waves_128[10:20])
+            where_above_nf = np.where(waves_128 > noise_floor)
+
+            if np.shape(where_above_nf)[1] > 0:
+                maximum = np.nanmax(waves_128[where_above_nf])
+                mean = np.nanmean(waves_128[where_above_nf])
+                peaky = maximum / mean
+            else:
+                peaky = np.nan
+        else:
+            peaky = np.nan
+
+        if 'peaky' in args:
+            return peaky
+
+    peaky = np.apply_along_axis(by_row, 1, waves1, 'peaky')
+
+    return peaky
+``` 
+
 
 
 
