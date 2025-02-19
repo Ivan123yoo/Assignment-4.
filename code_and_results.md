@@ -196,4 +196,71 @@ The image highlights two different clusters (represented by different colors), d
 - Supports further analysis for **environmental monitoring** and **climate studies**.
 
 
+# **Gaussian Mixture Model (GMM) Clustering on Sentinel-2 Bands**
+
+## **Introduction**
+In this section, we apply the **Gaussian Mixture Model (GMM)** clustering algorithm to Sentinel-2 imagery. Unlike K-Means, which assigns data points to the nearest cluster center, **GMM uses probabilistic clustering**, allowing for soft classification of pixels. This method is useful in remote sensing when spectral properties of land, water, and ice overlap.
+
+The objective is to use **Sentinel-2 bands** to classify different surface types in the image.
+
+---
+
+## **1. Import Necessary Libraries**
+The following libraries are used:
+- `rasterio`: For reading satellite image data.
+- `numpy`: For numerical computations and data manipulation.
+- `sklearn.mixture.GaussianMixture`: For performing **GMM clustering**.
+- `matplotlib.pyplot`: For visualizing the results.
+
+```python
+import rasterio
+import numpy as np
+from sklearn.mixture import GaussianMixture
+import matplotlib.pyplot as plt
+
+# Paths to the band images
+base_path = "/content/drive/MyDrive/AL4EO/W4/Unsupervised Learning/S2A_MSIL1C_20190301T235611_N0207_R116_T01WCU_20190302T014622.SAFE/GRANULE/L1C_T01WCU_A019275_20190301T235610/IMG_DATA/"
+bands_paths = {
+    'B4': base_path + 'T01WCU_20190301T235611_B04.jp2',
+    'B3': base_path + 'T01WCU_20190301T235611_B03.jp2',
+    'B2': base_path + 'T01WCU_20190301T235611_B02.jp2'
+}
+
+# Read and stack the band images
+band_data = []
+for band in ['B4']:
+    with rasterio.open(bands_paths[band]) as src:
+        band_data.append(src.read(1))
+
+# Stack bands and create a mask for valid data (non-zero values in all bands)
+band_stack = np.dstack(band_data)
+valid_data_mask = np.all(band_stack > 0, axis=2)
+
+# Reshape for GMM, only including valid data
+X = band_stack[valid_data_mask].reshape((-1, 1))
+
+# GMM clustering
+gmm = GaussianMixture(n_components=2, random_state=0).fit(X)
+labels = gmm.predict(X)
+
+# Create an empty array for the result, filled with a no-data value (e.g., -1)
+labels_image = np.full(band_stack.shape[:2], -1, dtype=int)
+
+# Place GMM labels in the locations corresponding to valid data
+labels_image[valid_data_mask] = labels
+
+# Plotting the result
+plt.imshow(labels_image, cmap='viridis')
+plt.title('GMM clustering on Sentinel-2 Bands')
+plt.colorbar(label='Cluster Label')
+plt.show()
+```
+
+## **2. Clustering Output Image**
+Below is the result of applying **GMM clustering** to the Sentinel-2 bands:
+
+![GMM Clustering Output](https://github.com/Ivan123yoo/Assignment-4./blob/main/images/GMM%20Clustering.png?raw=true)
+
+
+
 
