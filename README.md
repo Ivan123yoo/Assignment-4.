@@ -16,15 +16,15 @@ By processing **altimetry and optical satellite data**, we explore how machine l
 ---
 
 ## Approach
-### 1️⃣ Data Preprocessing
+###  Data Preprocessing
 - Sentinel-2 imagery is **processed and stacked** for clustering.
 - Sentinel-3 waveform data is **filtered and cleaned** for classification.
 
-### 2️⃣ Unsupervised Learning Methods
+###  Unsupervised Learning Methods
 - **K-Means Clustering**: Groups data points based on spectral and waveform features.
 - **Gaussian Mixture Model (GMM)**: Uses a probabilistic approach for soft clustering.
 
-### 3️⃣ Visualization & Evaluation
+###  Visualization & Evaluation
 - **Clustered waveforms** are plotted to analyze sea ice and lead characteristics.
 - **Confusion matrix and classification report** compare model results with ESA’s official classification.
 
@@ -43,11 +43,12 @@ By processing **altimetry and optical satellite data**, we explore how machine l
 - **Distinct clustering of sea ice and leads**, confirming the effectiveness of the models.
 - **Waveform characteristics** clearly differentiate between ice and lead clusters.
 
-📌 **Sample Confusion Matrix Output:**
+ **Sample Confusion Matrix Output:**
+[[8856 22] [ 24 3293]]
 
 
-📌 **Classification Report Summary:**
-
+ **Classification Report Summary:**
+Precision: 1.00 | Recall: 1.00 | F1-score: 1.00 (Sea Ice) Precision: 0.99 | Recall: 0.99 | F1-score: 0.99 (Lead) Overall Accuracy: 99.6%
 
 
 ---
