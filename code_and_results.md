@@ -733,6 +733,57 @@ This plot shows the **aligned waveforms** after applying **cross-correlation** t
 ![Waveform Alignment Plot](https://github.com/Ivan123yoo/Assignment-4./blob/main/images/function.png?raw=true)
 
 
+## **Compare with ESA Data**
+
+The **ESA dataset** classifies **sea ice as 1** and **lead as 2**. To match our predicted labels with the ESA dataset, we **subtract 1** from the ESA labels so that:
+- **Sea Ice (1 in ESA) → 0** in our classification
+- **Lead (2 in ESA) → 1** in our classification
+
+This allows us to directly compare our **GMM-predicted clusters** with ESA’s official product labels.
+
+---
+
+### **Python Code for Evaluation**
+We compute:
+1. **Confusion Matrix**: Evaluates how well the classification model assigns correct labels.
+2. **Classification Report**: Includes precision, recall, and F1-score to assess performance.
+
+```python
+# Adjust ESA dataset labels for comparison
+flag_cleaned_modified = flag_cleaned - 1  # Convert ESA labels to match predicted labels
+
+from sklearn.metrics import confusion_matrix, classification_report
+
+true_labels = flag_cleaned_modified  # True labels from the ESA dataset
+predicted_gmm = clusters_gmm         # Predicted labels from GMM method
+
+# Compute confusion matrix
+conf_matrix = confusion_matrix(true_labels, predicted_gmm)
+
+# Print confusion matrix
+print("Confusion Matrix:")
+print(conf_matrix)
+
+# Compute classification report
+class_report = classification_report(true_labels, predicted_gmm)
+
+# Print classification report
+print("\nClassification Report:")
+print(class_report)
+```
+
+Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       1.00      1.00      1.00      8878
+         1.0       0.99      0.99      0.99      3317
+
+    accuracy                           1.00     12195
+   macro avg       1.00      1.00      1.00     12195
+weighted avg       1.00      1.00      1.00     12195
+
+
+
 
 
 
