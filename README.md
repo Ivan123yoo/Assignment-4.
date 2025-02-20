@@ -39,9 +39,9 @@ By processing altimetry and optical satellite data, we explore how machine learn
 ---
 
 ## Results
-- **High accuracy (99.6%)** when compared with ESA’s classification.
-- **Distinct clustering of sea ice and leads**, confirming the effectiveness of the models.
-- **Waveform characteristics** clearly differentiate between ice and lead clusters.
+- High accuracy (99.6%) when compared with ESA’s classification.
+- Distinct clustering of sea ice and leads, confirming the effectiveness of the models.
+- Waveform characteristics clearly differentiate between ice and lead clusters.
 
  **Sample Confusion Matrix Output:**
 [[8856 22] [ 24 3293]]
