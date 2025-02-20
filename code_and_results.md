@@ -601,6 +601,28 @@ plt.show()
 
 ![Plot of Echoes for the Lead Cluster](https://github.com/Ivan123yoo/Assignment-4./blob/main/images/lead%20cluster.png?raw=true)
 
+## **Plot of Echoes for the Sea Ice Cluster**
+
+The following code generates a plot displaying echoes for the **sea ice cluster**.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Extract echoes for the sea ice cluster
+x = np.stack([np.arange(1, waves_cleaned[clusters_gmm == 0].shape[1] + 1)] * waves_cleaned[clusters_gmm == 0].shape[0])
+
+# Plot echoes
+plt.plot(x, waves_cleaned[clusters_gmm == 0])
+plt.title("Plot of Echoes for the Sea Ice Cluster")
+plt.xlabel("Time Steps")
+plt.ylabel("Echo Amplitude")
+plt.show()
+```
+
+## **Plot of Echoes for the Sea Ice Cluster**
+
+![Plot of Echoes for the Sea Ice Cluster](https://github.com/Ivan123yoo/Assignment-4./blob/main/images/leadcluster.png?raw=true)
 
     
 
