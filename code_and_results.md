@@ -60,7 +60,7 @@ Below is the K-means clustering result:
 The output image displays the K-means clustering results applied to a randomly generated dataset. The data points are grouped into four distinct clusters, each represented by a different color.
 
 The black circles in the plot indicate the centroids of the clusters, which are the computed centers of each group.
-The clustering algorithm effectively groups similar data points together based on their spatial proximity.
+The clustering algorithm groups similar data points together based on their spatial proximity.
 The distribution of points suggests how K-means finds structure within the data, even without prior knowledge of any labels.
 This visualization demonstrates how unsupervised learning can be used to categorize unlabelled data based on inherent patterns.
 
@@ -70,9 +70,7 @@ This visualization demonstrates how unsupervised learning can be used to categor
 
 This section introduces Gaussian Mixture Models (GMM), which are a probabilistic model for representing normally distributed subpopulations within an overall dataset. Unlike K-means clustering, which assigns each data point to a single cluster, GMM provides a probability-based clustering approach, meaning each point has a probability of belonging to multiple clusters. This makes it more flexible for identifying clusters with different shapes and variances.
 
-GMM is particularly useful in scenarios where:
-- **Soft Clustering is Required**: Instead of a hard assignment like K-means, GMM provides probability estimates for each cluster.
-- **Cluster Shape Flexibility**: GMM allows for elliptical and complex cluster structures, unlike K-means which assumes spherical clusters.
+GMM is particularly useful in cases where soft clustering is needed, as it assigns probability estimates to each data point rather than forcing them into a single cluster, unlike K-means. This makes it more flexible, especially when dealing with overlapping data distributions. Additionally, GMM can model complex cluster structures, making it a better choice for datasets where clusters are not simply spherical, as assumed in K-means clustering.
 
 ### **1. Import Necessary Libraries**
 The following libraries are used:
@@ -114,12 +112,10 @@ Below is the **Gaussian Mixture Model (GMM) clustering result**:
 
 ## **Image Classification using K-Means Clustering**
 
-In this section, we apply K-Means clustering to classify Sentinel-2 satellite imagery, specifically distinguishing between sea ice and open water. The goal is to leverage unsupervised learning to detect differences in spectral characteristics of Sentinel-2 bands. This method helps automate image classification, which is useful for environmental monitoring and climate research.
+In this section, we apply K-Means clustering to classify Sentinel-2 satellite imagery, specifically distinguishing between sea ice and open water. The goal is to leverage unsupervised learning to detect differences in spectral characteristics of Sentinel-2 bands.
 
-We will:
-- Read Sentinel-2 image bands.
-- Preprocess the data and apply K-Means clustering.
-- Generate a classified image to distinguish different regions.
+K-Means Clustering on Sentinel-2 Data
+In this process, we analyze Sentinel-2 image bands by first reading and preprocessing the data. We then apply K-Means clustering to classify different regions based on spectral characteristics, generating a classified image that highlights distinct surface types.
 
 ### **1. Import Necessary Libraries**
 The following libraries are used:
@@ -193,10 +189,9 @@ The displayed image represents the K-Means clustering classification applied to 
 #### **What this shows:**
 The image highlights two different clusters (represented by different colors), distinguishing features within the Sentinel-2 satellite imagery. This clustering approach helps in identifying variations in surface features, such as differentiating between sea ice and leads in the dataset.
 
-#### **Why this is useful:**
-- It provides an unsupervised classification method to analyze remote sensing imagery.
-- Helps in automating feature detection in satellite images, reducing manual interpretation.
-- Supports further analysis for environmental monitoring and climate studies.
+### **Why This is Useful**  
+This approach provides an unsupervised classification method for analyzing remote sensing imagery, allowing for automated feature detection in satellite images and reducing the need for manual interpretation. Additionally, it supports further research in environmental monitoring and climate studies, helping to identify patterns and changes in land and water surfaces.  
+
 
 
 # **Gaussian Mixture Model (GMM) Clustering on Sentinel-2 Bands**
@@ -472,13 +467,13 @@ data_normalized = scaler.fit_transform(data)
 # **Altimetry Classification - Preprocessing Functions**
 
 ## **Overview**
-Before applying machine learning models to classify Sentinel-3 altimetry data, it is essential to preprocess the raw waveform data. This step ensures that the input features are properly structured and optimized for classification. The following preprocessing functions help transform waveform characteristics into meaningful numerical values that can be used to distinguish between sea ice and leads.
+Preprocessing the raw waveform data is crucial before using machine learning models to classify Sentinel-3 altimetry data. This stage guarantees that the input features are appropriately organised and classified-optimized. In order to convert waveform features into useful numerical values that can be used to differentiate between leads and sea ice, the following preprocessing functions are helpful.
 
 ## **Peakiness Calculation**
-The peakiness function analyzes the shape of a waveform by identifying the highest peak and measuring how sharply the waveform energy is concentrated. By computing the peak-to-mean ratio, this function provides insight into waveform sharpness, which is useful for distinguishing between surfaces like open water and sea ice. Leads generally exhibit higher peakiness, while rougher ice surfaces have more spread-out energy distributions.
+By determining the highest peak and quantifying the degree of energy concentration in the waveform, the peakiness function examines the waveform's shape. This function gives information about waveform sharpness by calculating the peak-to-mean ratio, which is helpful for differentiating between surfaces such as sea ice and open ocean. Higher peakiness is typically seen in leads, whereas more dispersed energy distributions are found on rougher ice surfaces.
 
 ## **GPOD Variable Extraction**
-Different variables in the Sentinel-3 dataset exist at different resolutions, requiring interpolation for consistency. The GPOD extraction function resamples low-resolution 1 Hz data to match the 20 Hz high-resolution measurements, ensuring that all features are aligned correctly. This step is critical for preventing discrepancies in time-series analysis and ensuring the dataset is complete for classification models.
+Interpolation is necessary for consistency because various variables in the Sentinel-3 dataset exist at different resolutions. To make sure that all features are properly aligned, the GPOD extraction algorithm resamples low-resolution 1 Hz data to match the 20 Hz high-resolution observations. In order to avoid inconsistencies in time-series analysis and guarantee that the dataset is comprehensive for classification models, this step is essential.
 
 ## **Stack Standard Deviation (SSD) Calculation**
 The SSD function analyzes the spread of waveform energy by fitting a Gaussian model to the waveform. This provides a numerical measure of how dispersed the energy is, which can help distinguish between smooth open water and rough sea ice surfaces. A higher SSD value generally indicates a more scattered waveform, which is associated with ice-covered regions, while lower values suggest smoother, more reflective surfaces such as leads.
@@ -795,14 +790,12 @@ weighted avg       1.00      1.00      1.00     12195
 ### Summary of Findings
 The Gaussian Mixture Model (GMM) classification was evaluated against the ESA official classification using a confusion matrix and classification report. The results show that the model performs exceptionally well in distinguishing between sea ice and lead.
 
-- Out of 12,195 total cases, only **46 were misclassified**.
+- Out of 12,195 total cases, only 46 were misclassified.
 - The model correctly identified 8,856 instances of sea ice and 3,293 instances of lead.
 - Precision, recall, and F1-scores for both classes were close to 1.00, indicating near-perfect classification.
 
-### Key Takeaways
-1. **High Accuracy** – The model achieved an accuracy of **99.6%**, meaning it correctly classified nearly all instances.
-2. **Minimal Errors** – Only **22 sea ice cases** were misclassified as lead, and **24 lead cases** were misclassified as sea ice.
-3. **Reliable Performance** – The classification results closely match ESA’s official product, proving the GMM approach is effective for echo classification.
+### Key findings
+The model demonstrated high accuracy, achieving 99.6%, with nearly all instances correctly classified. Misclassification was minimal, with only 22 sea ice cases mistakenly identified as lead and 24 lead cases classified as sea ice. Overall, the classification results closely align with ESA’s official product, confirming that the GMM approach is highly effective for echo classification.
 
 ### Limitations and Considerations
 While the model performed well, there are a few aspects to consider:
