@@ -577,6 +577,31 @@ The plot below visualizes all echoes in the dataset:
 
 ![Plot of All Echoes](https://github.com/Ivan123yoo/Assignment-4./blob/main/images/np.stack.png?raw=true)
 
+
+## **Plot of Echoes for the Lead Cluster**
+
+The following code generates a plot displaying echoes for the **lead cluster**.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Extract echoes for the lead cluster
+x = np.stack([np.arange(1, waves_cleaned[clusters_gmm == 1].shape[1] + 1)] * waves_cleaned[clusters_gmm == 1].shape[0])
+
+# Plot echoes
+plt.plot(x, waves_cleaned[clusters_gmm == 1])
+plt.title("Plot of Echoes for the Lead Cluster")
+plt.xlabel("Time Steps")
+plt.ylabel("Echo Amplitude")
+plt.show()
+```
+
+### **Plot of Echoes for the Lead Cluster**
+
+![Plot of Echoes for the Lead Cluster](https://github.com/Ivan123yoo/Assignment-4./blob/main/images/lead%20cluster.png?raw=true)
+
+
     
 
 
