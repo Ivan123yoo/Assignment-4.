@@ -15,7 +15,7 @@ This project explores the use of unsupervised learning methods to classify sea i
 3. **Evaluation and Comparison**  
    - Compare clustering results with ESA’s official classification to assess accuracy.
 
-This notebook provides a step-by-step guide to implementing these methods, from **preprocessing satellite data** to **visualizing and interpreting clustering results**. The goal is to **demonstrate how unsupervised learning can be applied in real-world remote sensing applications**.
+This notebook provides a step-by-step guide to implementing these methods, from preprocessing satellite data to visualizing and interpreting clustering results. The goal is to demonstrate how unsupervised learning can be applied in real-world remote sensing applications.
 
 ---
 
