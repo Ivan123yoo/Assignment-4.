@@ -626,6 +626,56 @@ plt.show()
 
     
 
+## **Scatter Plots of Clustered Data**
+
+This code visualizes the clustering results using scatter plots, where different colors represent different clusters (`clusters_gmm`).
+
+```python
+import matplotlib.pyplot as plt
+
+# Scatter plot for sig_0 vs PP
+plt.scatter(data_cleaned[:, 0], data_cleaned[:, 1], c=clusters_gmm)
+plt.xlabel("sig_0")
+plt.ylabel("PP")
+plt.show()
+
+# Scatter plot for sig_0 vs SSD
+plt.scatter(data_cleaned[:, 0], data_cleaned[:, 2], c=clusters_gmm)
+plt.xlabel("sig_0")
+plt.ylabel("SSD")
+plt.show()
+
+# Scatter plot for PP vs SSD
+plt.scatter(data_cleaned[:, 1], data_cleaned[:, 2], c=clusters_gmm)
+plt.xlabel("PP")
+plt.ylabel("SSD")
+plt.show()
+```
+
+## **Scatter Plots of Clustered Data**
+
+These scatter plots visualize the clustering results using different feature pairings. Each color represents a different cluster determined by the `clusters_gmm` algorithm.
+
+---
+
+### **1. Scatter Plot: sig_0 vs PP**
+This scatter plot shows the relationship between `sig_0` and `PP`, with clusters distinguished by color.
+
+![Scatter Plot: sig_0 vs PP](https://github.com/Ivan123yoo/Assignment-4./blob/main/images/scatter%201.png?raw=true)
+
+---
+
+### **2. Scatter Plot: sig_0 vs SSD**
+This scatter plot visualizes how `sig_0` relates to `SSD`, with clear clustering patterns.
+
+![Scatter Plot: sig_0 vs SSD](https://github.com/Ivan123yoo/Assignment-4./blob/main/images/scatter%202.png?raw=true)
+
+---
+
+### **3. Scatter Plot: PP vs SSD**
+This scatter plot compares `PP` and `SSD`, showing how the clusters are distributed based on these two features.
+
+![Scatter Plot: PP vs SSD](https://github.com/Ivan123yoo/Assignment-4./blob/main/images/scatter%203.png?raw=true)
 
 
 
