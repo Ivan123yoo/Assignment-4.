@@ -464,21 +464,9 @@ scaler = StandardScaler()
 data_normalized = scaler.fit_transform(data)
 ```
 
-# **Altimetry Classification - Preprocessing Functions**
+## **Altimetry Classification**  
 
-## **Preprocessing for Altimetry Classification**
-
-Before applying machine learning to classify **Sentinel-3 altimetry data**, preprocessing is essential to ensure the data is structured correctly. The following steps extract meaningful numerical features from waveform data, helping to differentiate between **sea ice and leads**.
-
-### **Key Preprocessing Steps**
-- **Peakiness Calculation**: Measures waveform sharpness by analyzing energy concentration. Leads tend to have higher peakiness, while rougher ice surfaces show more dispersed energy.
-- **GPOD Variable Extraction**: Ensures consistency by aligning Sentinel-3 variables, resampling low-resolution data to match high-resolution observations.
-- **Stack Standard Deviation (SSD) Calculation**: Quantifies how spread out the waveform energy is, distinguishing between smooth open water and rough ice surfaces.
-
-### **Connecting to the Code**
-After preprocessing, NaN values are removed to clean the dataset. The **Gaussian Mixture Model (GMM)** is then applied to cluster the data into two classes, representing **sea ice and leads**. The resulting clusters provide an unsupervised classification method for altimetry data.
-
-This streamlined approach refines the dataset, making it suitable for further analysis and classification.
+Sentinel-3 altimetry data is processed to extract key waveform features for classification. Peakiness Calculation measures waveform sharpness to distinguish between smooth and rough surfaces, while GPOD Variable Extraction aligns data by resampling low-resolution measurements. Stack Standard Deviation (SSD) Calculation quantifies waveform energy spread, helping differentiate sea ice from leads. Once cleaned, the data is clustered using the Gaussian Mixture Model (GMM) to identify meaningful classifications, providing a structured approach to analyzing altimetry signals.  
 
 
 There are some NaN values in the dataset so one way to deal with this is to delete them.
