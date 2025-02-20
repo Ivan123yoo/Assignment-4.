@@ -796,7 +796,7 @@ weighted avg       1.00      1.00      1.00     12195
 The Gaussian Mixture Model (GMM) classification was evaluated against the ESA official classification using a confusion matrix and classification report. The results show that the model performs exceptionally well in distinguishing between sea ice and lead.
 
 - Out of 12,195 total cases, only **46 were misclassified**.
-- The model correctly identified 8,856 instances of sea ice** and 3,293 instances of lead.
+- The model correctly identified 8,856 instances of sea ice and 3,293 instances of lead.
 - Precision, recall, and F1-scores for both classes were close to 1.00, indicating near-perfect classification.
 
 ### Key Takeaways
