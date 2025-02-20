@@ -677,6 +677,62 @@ This scatter plot compares `PP` and `SSD`, showing how the clusters are distribu
 
 ![Scatter Plot: PP vs SSD](https://github.com/Ivan123yoo/Assignment-4./blob/main/images/scatter%203.png?raw=true)
 
+## **Waveform Alignment Using Cross-Correlation**
+
+This section explains how **waveforms in the cluster where `clusters_gmm == 0`** are aligned using **cross-correlation**. Cross-correlation helps to shift the waveforms so that they align to a reference point, improving clustering consistency.
+
+---
+
+### **Code Explanation**
+1. **Import Required Function**  
+   - `correlate` from `scipy.signal` is used for computing cross-correlation.
+
+2. **Find the Reference Point**  
+   - The reference point is chosen as the **peak** of the average waveform in the cluster.
+
+3. **Align Waveforms Using Cross-Correlation**  
+   - Each waveform is cross-correlated with the reference to determine the **shift** needed for alignment.
+   - `np.roll()` is used to **shift** the waveforms accordingly.
+
+4. **Plot the Aligned Waveforms**  
+   - The aligned waveforms are plotted to visualize the effect of cross-correlation.
+
+---
+
+### **Python Code for Waveform Alignment**
+
+```python
+from scipy.signal import correlate
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Find the reference point (e.g., the peak)
+reference_point_index = np.argmax(np.mean(waves_cleaned[clusters_gmm == 0], axis=0))
+
+# Calculate cross-correlation with the reference point
+aligned_waves = []
+for wave in waves_cleaned[clusters_gmm == 0][:len(waves_cleaned[clusters_gmm == 0]) // 10]:
+    correlation = correlate(wave, waves_cleaned[clusters_gmm == 0][0])
+    shift = len(wave) - np.argmax(correlation)
+    aligned_wave = np.roll(wave, shift)  # Shift waveform to align
+    aligned_waves.append(aligned_wave)
+
+# Plot aligned waves
+for aligned_wave in aligned_waves:
+    plt.plot(aligned_wave)
+
+plt.title('Plot of 10 equally spaced functions where clusters_gmm = 0 (aligned)')
+plt.xlabel('Time Steps')
+plt.ylabel('Amplitude')
+plt.show()
+```
+### **Waveform Alignment Visualization**
+
+This plot shows the **aligned waveforms** after applying **cross-correlation** to the `clusters_gmm == 0` group.
+
+![Waveform Alignment Plot](https://github.com/Ivan123yoo/Assignment-4./blob/main/images/function.png?raw=true)
+
+
 
 
 
