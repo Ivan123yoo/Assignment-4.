@@ -745,8 +745,8 @@ This allows us to directly compare our GMM-predicted clusters with ESA’s offic
 
 ### Python Code for Evaluation
 To assess our classification, we compute:
-1. **Confusion Matrix** – Measures how well our model assigns correct labels.
-2. **Classification Report** – Includes precision, recall, and F1-score to evaluate performance.
+1. Confusion Matrix – Measures how well our model assigns correct labels.
+2. Classification Report – Includes precision, recall, and F1-score to evaluate performance.
 
 ```python
 # Adjust ESA dataset labels for comparison
@@ -792,9 +792,9 @@ weighted avg       1.00      1.00      1.00     12195
 ### Summary of Findings
 The Gaussian Mixture Model (GMM) classification was evaluated against the ESA official classification using a confusion matrix and classification report. The results show that the model performs exceptionally well in distinguishing between sea ice and lead.
 
-- Out of **12,195 total cases**, only **46 were misclassified**.
-- The model correctly identified **8,856 instances of sea ice** and **3,293 instances of lead**.
-- Precision, recall, and F1-scores for both classes were **close to 1.00**, indicating near-perfect classification.
+- Out of 12,195 total cases, only **46 were misclassified**.
+- The model correctly identified 8,856 instances of sea ice** and 3,293 instances of lead.
+- Precision, recall, and F1-scores for both classes were close to 1.00, indicating near-perfect classification.
 
 ### Key Takeaways
 1. **High Accuracy** – The model achieved an accuracy of **99.6%**, meaning it correctly classified nearly all instances.
@@ -808,7 +808,7 @@ While the model performed well, there are a few aspects to consider:
 - The dataset used is highly structured, and performance may vary with more diverse or noisy data.
 
 ### Final Conclusion
-The results demonstrate that the **GMM-based classification is highly reliable** for distinguishing sea ice from leads. The model’s performance is **closely aligned with ESA’s official classification**, making it a valid approach for echo classification in altimetry datasets.
+The results demonstrate that the GMM-based classification is highly reliable for distinguishing sea ice from leads. The model’s performance is closely aligned with ESA’s official classification, making it a valid approach for echo classification in altimetry datasets.
 
 
 
