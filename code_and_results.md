@@ -1,20 +1,23 @@
+# Unsupervised Learning for Sea Ice and Lead Classification
 
-first we start of with mounting
+This project explores the use of unsupervised learning methods to classify sea ice and leads using Sentinel-2 optical data and Sentinel-3 altimetry data. Instead of relying on labeled datasets, we use clustering techniques to uncover patterns in the data, allowing us to group similar observations.
 
-from google.colab import drive
-drive.mount('/content/drive')
+### Objectives
+- Classify sea ice and lead using unsupervised learning methods.
+- Apply K-Means and Gaussian Mixture Model (GMM) clustering to satellite-derived datasets.
+- Analyze and interpret results using confusion matrices, classification reports, and waveform visualizations.
 
-then we install rasterio
+### Approach
+1. **Image-based classification (Sentinel-2 data)**  
+   - Uses spectral data to group pixels into meaningful clusters.
+2. **Altimetry classification (Sentinel-3 data)**  
+   - Uses waveform characteristics to differentiate sea ice from open water.
+3. **Evaluation and Comparison**  
+   - Compare clustering results with ESA’s official classification to assess accuracy.
 
-pip install rasterio
+This notebook provides a step-by-step guide to implementing these methods, from **preprocessing satellite data** to **visualizing and interpreting clustering results**. The goal is to **demonstrate how unsupervised learning can be applied in real-world remote sensing applications**.
 
-## K-means Clustering Example
-
-This section of the notebook demonstrates the use of K-means clustering on synthetically generated data to understand the algorithm's application.
-
-### Dependencies Installation
-
-Before running the clustering, ensure that the necessary Python library `netCDF4` is installed. This library is essential for handling scientific data formats:
+---
 
 
 ## **K-means Clustering Example**
