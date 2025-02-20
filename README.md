@@ -69,12 +69,7 @@ Precision: 1.00 | Recall: 1.00 | F1-score: 1.00 (Sea Ice) Precision: 0.99 | Reca
    - Execute the notebook step by step.
    - The classification results will be generated automatically.
 
----
 
-## Repository Structure
-
-
----
 
 ## Sample Visualizations
 ### **K-Means Clustering Output**
