@@ -18,7 +18,7 @@ Before running the clustering, ensure that the necessary Python library `netCDF4
 
 
 ## **K-means Clustering Example**
-This section demonstrates the use of **K-means clustering** to classify randomly generated data into four clusters.
+This section demonstrates the use of K-means clustering to classify randomly generated data into four clusters.
 
 ### **1. Import Necessary Libraries**
 The following libraries are used:
@@ -65,7 +65,7 @@ This visualization demonstrates how unsupervised learning can be used to categor
 
 ## Gaussian Mixture Model (GMM) Clustering Example
 
-This section introduces **Gaussian Mixture Models (GMM)**, which are a probabilistic model for representing normally distributed subpopulations within an overall dataset. Unlike K-means clustering, which assigns each data point to a single cluster, **GMM provides a probability-based clustering approach**, meaning each point has a probability of belonging to multiple clusters. This makes it **more flexible** for identifying clusters with different shapes and variances.
+This section introduces Gaussian Mixture Models (GMM), which are a probabilistic model for representing normally distributed subpopulations within an overall dataset. Unlike K-means clustering, which assigns each data point to a single cluster, GMM provides a probability-based clustering approach, meaning each point has a probability of belonging to multiple clusters. This makes it more flexible for identifying clusters with different shapes and variances.
 
 GMM is particularly useful in scenarios where:
 - **Soft Clustering is Required**: Instead of a hard assignment like K-means, GMM provides probability estimates for each cluster.
@@ -111,7 +111,7 @@ Below is the **Gaussian Mixture Model (GMM) clustering result**:
 
 ## **Image Classification using K-Means Clustering**
 
-In this section, we apply **K-Means clustering** to classify Sentinel-2 satellite imagery, specifically distinguishing between **sea ice and open water**. The goal is to leverage unsupervised learning to detect differences in spectral characteristics of Sentinel-2 bands. This method helps automate image classification, which is useful for environmental monitoring and climate research.
+In this section, we apply K-Means clustering to classify Sentinel-2 satellite imagery, specifically distinguishing between sea ice and open water. The goal is to leverage unsupervised learning to detect differences in spectral characteristics of Sentinel-2 bands. This method helps automate image classification, which is useful for environmental monitoring and climate research.
 
 We will:
 - Read Sentinel-2 image bands.
@@ -185,21 +185,21 @@ Below is the K-Means clustering result applied to Sentinel-2 bands:
 
 ### **Explanation of the Results**
 
-The displayed image represents the **K-Means clustering classification applied to Sentinel-2 bands**, where the algorithm has grouped pixels into distinct clusters based on their spectral values.
+The displayed image represents the K-Means clustering classification applied to Sentinel-2 bands, where the algorithm has grouped pixels into distinct clusters based on their spectral values.
 
 #### **What this shows:**
-The image highlights two different clusters (represented by different colors), distinguishing features within the Sentinel-2 satellite imagery. This clustering approach helps in identifying **variations in surface features**, such as differentiating between **sea ice and leads** in the dataset.
+The image highlights two different clusters (represented by different colors), distinguishing features within the Sentinel-2 satellite imagery. This clustering approach helps in identifying variations in surface features, such as differentiating between sea ice and leads in the dataset.
 
 #### **Why this is useful:**
-- It provides an **unsupervised classification** method to analyze remote sensing imagery.
-- Helps in **automating feature detection** in satellite images, reducing manual interpretation.
-- Supports further analysis for **environmental monitoring** and **climate studies**.
+- It provides an unsupervised classification method to analyze remote sensing imagery.
+- Helps in automating feature detection in satellite images, reducing manual interpretation.
+- Supports further analysis for environmental monitoring and climate studies.
 
 
 # **Gaussian Mixture Model (GMM) Clustering on Sentinel-2 Bands**
 
 ## **Introduction**
-In this section, we apply the **Gaussian Mixture Model (GMM)** clustering algorithm to Sentinel-2 imagery. Unlike K-Means, which assigns data points to the nearest cluster center, **GMM uses probabilistic clustering**, allowing for soft classification of pixels. This method is useful in remote sensing when spectral properties of land, water, and ice overlap.
+In this section, we apply the Gaussian Mixture Model clustering algorithm to Sentinel-2 imagery. Unlike K-Means, which assigns data points to the nearest cluster center, GMM uses probabilistic clustering, allowing for soft classification of pixels. This method is useful in remote sensing when spectral properties of land, water, and ice overlap.
 
 The objective is to use **Sentinel-2 bands** to classify different surface types in the image.
 
@@ -266,19 +266,19 @@ Below is the result of applying **GMM clustering** to the Sentinel-2 bands:
 
 The **GMM clustering output** on Sentinel-2 bands represents the classification of the satellite image into different surface types. The key observations from the result are:
 
-- The **color-coded regions** correspond to different clusters identified by the **Gaussian Mixture Model (GMM)** based on reflectance values from the Sentinel-2 imagery.
-- The **dark purple region (left side)** represents areas where the algorithm could not classify data due to missing or low-reflectance values.
-- The **yellow and green regions** indicate different terrain features, with the **yellow areas likely corresponding to highly reflective surfaces** such as ice or snow-covered regions.
-- The **blue-green areas** might represent water bodies or darker terrain, which have lower reflectance in the selected band.
-- The **gradual color transition** shows how GMM captures soft boundaries between different surface types, unlike K-Means which enforces hard clustering.
+- The color-coded regions correspond to different clusters identified by the Gaussian Mixture Model (GMM) based on reflectance values from the Sentinel-2 imagery.
+- The dark purple region (left side) represents areas where the algorithm could not classify data due to missing or low-reflectance values.
+- The yellow and green regions indicate different terrain features, with the yellow areas likely corresponding to highly reflective surfaces such as ice or snow-covered regions.
+- The blue-green areas might represent water bodies or darker terrain, which have lower reflectance in the selected band.
+- The gradual color transition shows how GMM captures soft boundaries between different surface types, unlike K-Means which enforces hard clustering.
 
 This result is useful for **remote sensing applications**, helping to distinguish between features such as **ice, open water, and land** using unsupervised learning.
 
 # Altimetry Classification
 
-Now, let's explore the application of **unsupervised methods** to **altimetry classification** tasks, focusing specifically on distinguishing between **sea ice and leads** in the **Sentinel-3 altimetry dataset**.
+Now, let's explore the application of unsupervised methods to altimetry classification tasks, focusing specifically on distinguishing between sea ice and leads in the Sentinel-3 altimetry dataset.
 
-Before we can apply classification methods, we must **preprocess the data** by extracting meaningful features. The following functions are used for this purpose.
+Before we can apply classification methods, we must preprocess the data by extracting meaningful features. The following functions are used for this purpose.
 
 ---
 
@@ -547,8 +547,8 @@ Below is the clustering result:
 ### **Mean and Standard Deviation of Waveforms for Each Class**
 The plot above visualizes the mean waveform along with the standard deviation for each class identified in the clustering process. The two classes, "ice" and "lead," are represented by distinct colors.
 
-- The **solid lines** show the average waveform shape for each class.
-- The **shaded regions** indicate the variability within each class, represented by the standard deviation.
+- The solid lines show the average waveform shape for each class.
+- The shaded regions indicate the variability within each class, represented by the standard deviation.
 
 This visualization helps in understanding the differences between waveforms associated with ice and lead, showing distinct peaks and variations that contribute to their classification.
 
@@ -679,7 +679,7 @@ This scatter plot compares `PP` and `SSD`, showing how the clusters are distribu
 
 ## **Waveform Alignment Using Cross-Correlation**
 
-This section explains how **waveforms in the cluster where `clusters_gmm == 0`** are aligned using **cross-correlation**. Cross-correlation helps to shift the waveforms so that they align to a reference point, improving clustering consistency.
+This section explains how waveforms in the cluster where `clusters_gmm == 0` are aligned using cross-correlation. Cross-correlation helps to shift the waveforms so that they align to a reference point, improving clustering consistency.
 
 ---
 
