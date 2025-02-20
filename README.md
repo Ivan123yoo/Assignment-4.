@@ -1,7 +1,7 @@
 # Sea Ice and Lead Classification Using Unsupervised Learning
 
 ## Overview
-This project applies unsupervised machine learning techniques to classify sea ice and lead using Sentinel-2 and Sentinel-3 satellite data. The goal is to automate the classification process by leveraging clustering algorithms such as K-Means** and Gaussian Mixture Model (GMM).
+This project applies unsupervised machine learning techniques to classify sea ice and lead using Sentinel-2 and Sentinel-3 satellite data. The goal is to automate the classification process by leveraging clustering algorithms such as K-Means and Gaussian Mixture Model (GMM).
 By processing altimetry and optical satellite data, we explore how machine learning can be used to classify oceanic features without labeled data. The results are validated against ESA’s official classification.
 
 
@@ -17,16 +17,16 @@ By processing altimetry and optical satellite data, we explore how machine learn
 
 ## Approach
 ###  Data Preprocessing
-- Sentinel-2 imagery is **processed and stacked** for clustering.
-- Sentinel-3 waveform data is **filtered and cleaned** for classification.
+- Sentinel-2 imagery is processed and stacked for clustering.
+- Sentinel-3 waveform data is filtered and cleaned for classification.
 
 ###  Unsupervised Learning Methods
 - **K-Means Clustering**: Groups data points based on spectral and waveform features.
 - **Gaussian Mixture Model (GMM)**: Uses a probabilistic approach for soft clustering.
 
 ###  Visualization & Evaluation
-- **Clustered waveforms** are plotted to analyze sea ice and lead characteristics.
-- **Confusion matrix and classification report** compare model results with ESA’s official classification.
+- Clustered waveforms are plotted to analyze sea ice and lead characteristics.
+- Confusion matrix and classification report* compare model results with ESA’s official classification.
 
 ---
 
