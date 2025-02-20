@@ -90,8 +90,24 @@ This project successfully demonstrates how unsupervised learning can be applied 
 ---
 
 ## References
-- European Space Agency (ESA) Sentinel Data: [ESA Sentinel Hub](https://www.sentinel-hub.com/)
-- [scikit-learn](https://scikit-learn.org/stable/modules/clustering.html) for K-Means & GMM
-- Unsupervised Learning Methods: {cite}`bishop2006pattern`
+- **European Space Agency (ESA) Sentinel Data**: [ESA Sentinel Hub](https://www.sentinel-hub.com/)
+- **Scikit-Learn Documentation**: [scikit-learn](https://scikit-learn.org/stable/modules/clustering.html) for K-Means & GMM
+- **Remote Sensing Fundamentals**: Campbell, J. B., & Wynne, R. H. (2011). *Introduction to Remote Sensing.*
+- **Machine Learning for Remote Sensing**: Lary, D. J., et al. (2016). *Machine learning in geospatial analysis.* Computers & Geosciences.
+- **Clustering Theory & Applications**: Bishop, C. M. (2006). *Pattern Recognition and Machine Learning.*
+- **K-Means Clustering**: MacQueen, J. (1967). *Some methods for classification and analysis of multivariate observations.*
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
