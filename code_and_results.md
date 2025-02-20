@@ -552,6 +552,31 @@ The plot above visualizes the mean waveform along with the standard deviation fo
 
 This visualization helps in understanding the differences between waveforms associated with ice and lead, showing distinct peaks and variations that contribute to their classification.
 
+## **Plotting All Echoes**
+
+The following code generates a plot displaying all the echoes in the dataset.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Generate X values (time steps for each echo)
+x = np.stack([np.arange(1, waves_cleaned.shape[1] + 1)] * waves_cleaned.shape[0])
+
+# Plot all echoes
+plt.plot(x, waves_cleaned)
+plt.title("Plot of All Echoes")
+plt.xlabel("Time Steps")
+plt.ylabel("Echo Amplitude")
+plt.show()
+```
+
+## **Plot of All Echoes**
+
+The plot below visualizes all echoes in the dataset:
+
+![Plot of All Echoes](https://github.com/Ivan123yoo/Assignment-4./blob/main/images/np.stack.png?raw=true)
+
     
 
 
