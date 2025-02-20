@@ -733,20 +733,20 @@ This plot shows the **aligned waveforms** after applying **cross-correlation** t
 ![Waveform Alignment Plot](https://github.com/Ivan123yoo/Assignment-4./blob/main/images/function.png?raw=true)
 
 
-## **Compare with ESA Data**
+## Compare with ESA Data
 
-The **ESA dataset** classifies **sea ice as 1** and **lead as 2**. To match our predicted labels with the ESA dataset, we **subtract 1** from the ESA labels so that:
-- **Sea Ice (1 in ESA) → 0** in our classification
-- **Lead (2 in ESA) → 1** in our classification
+The ESA dataset classifies sea ice as 1 and lead as 2. To align our predicted labels with the ESA dataset, we subtract 1 from the ESA labels. This ensures:
+- Sea Ice (1 in ESA) is mapped to 0 in our classification.
+- Lead (2 in ESA) is mapped to 1 in our classification.
 
-This allows us to directly compare our **GMM-predicted clusters** with ESA’s official product labels.
+This allows us to directly compare our GMM-predicted clusters with ESA’s official labels.
 
 ---
 
-### **Python Code for Evaluation**
-We compute:
-1. **Confusion Matrix**: Evaluates how well the classification model assigns correct labels.
-2. **Classification Report**: Includes precision, recall, and F1-score to assess performance.
+### Python Code for Evaluation
+To assess our classification, we compute:
+1. **Confusion Matrix** – Measures how well our model assigns correct labels.
+2. **Classification Report** – Includes precision, recall, and F1-score to evaluate performance.
 
 ```python
 # Adjust ESA dataset labels for comparison
@@ -772,6 +772,11 @@ print("\nClassification Report:")
 print(class_report)
 ```
 
+Confusion Matrix:
+[[8856   22]
+ [  24 3293]]
+
+
 Classification Report:
               precision    recall  f1-score   support
 
@@ -782,67 +787,28 @@ Classification Report:
    macro avg       1.00      1.00      1.00     12195
 weighted avg       1.00      1.00      1.00     12195
 
-## **Quantifying Echo Classification Against ESA Official Classification**
+## Conclusion and Results Explanation
 
-This section evaluates the performance of our **GMM-based classification** by comparing it to the **ESA official classification** using a **confusion matrix**.
+### Summary of Findings
+The Gaussian Mixture Model (GMM) classification was evaluated against the ESA official classification using a confusion matrix and classification report. The results show that the model performs exceptionally well in distinguishing between sea ice and lead.
 
-### **Understanding the Confusion Matrix**
-A **confusion matrix** is used to compare the predicted labels from our **Gaussian Mixture Model (GMM)** against the **true labels from the ESA dataset**.
+- Out of **12,195 total cases**, only **46 were misclassified**.
+- The model correctly identified **8,856 instances of sea ice** and **3,293 instances of lead**.
+- Precision, recall, and F1-scores for both classes were **close to 1.00**, indicating near-perfect classification.
 
-#### **Computed Confusion Matrix:**
+### Key Takeaways
+1. **High Accuracy** – The model achieved an accuracy of **99.6%**, meaning it correctly classified nearly all instances.
+2. **Minimal Errors** – Only **22 sea ice cases** were misclassified as lead, and **24 lead cases** were misclassified as sea ice.
+3. **Reliable Performance** – The classification results closely match ESA’s official product, proving the GMM approach is effective for echo classification.
 
+### Limitations and Considerations
+While the model performed well, there are a few aspects to consider:
+- Some misclassifications still exist, which could be further analyzed to understand their cause.
+- Alternative clustering methods, such as supervised learning, could be explored for comparison.
+- The dataset used is highly structured, and performance may vary with more diverse or noisy data.
 
-
-#### **Interpretation:**
-| Predicted vs Actual  | True Sea Ice (0) | True Lead (1) |
-|----------------------|-----------------|---------------|
-| **Predicted Sea Ice (0)** | 8856 (Correct) | 22 (Incorrect) |
-| **Predicted Lead (1)**  | 24 (Incorrect) | 3293 (Correct) |
-
-- **8856** instances of sea ice were correctly classified.
-- **3293** instances of lead were correctly classified.
-- **22** cases of sea ice were **misclassified as lead**.
-- **24** cases of lead were **misclassified as sea ice**.
-- **Overall, the classification performed exceptionally well** with very few misclassifications.
-
----
-
-### **Classification Report**
-To further evaluate model performance, we use **precision, recall, and F1-score**:
-
-
-
-     0.0       1.00      1.00      1.00      8878
-     1.0       0.99      0.99      0.99      3317
-
-accuracy                           1.00     12195
-
-
-
-### **Breakdown of Metrics**
-| Class  | Precision | Recall | F1-Score | Support |
-|--------|------------|--------|----------|---------|
-| **Sea Ice (0)** | 1.00 | 1.00 | 1.00 | 8878 |
-| **Lead (1)** | 0.99 | 0.99 | 0.99 | 3317 |
-| **Overall Accuracy** | **1.00** | **1.00** | **1.00** | **12195** |
-
-#### **What These Metrics Mean:**
-- **Precision**: Measures how many of the predicted instances were correct.
-- **Recall**: Measures how many of the actual instances were correctly predicted.
-- **F1-Score**: Harmonic mean of precision and recall (higher is better).
-- **Support**: Number of actual occurrences of each class.
-
----
-
-### **Final Answer to the Assignment Requirement**
- We have **quantified the echo classification** against the **ESA official classification**.  
- The **confusion matrix** and **classification report** clearly show **high classification accuracy**.  
- The **model performed nearly perfectly**, with **very few misclassifications (only 46 out of 12,195 cases).**  
- **Final Conclusion:** The **GMM classification** is **highly reliable** and closely matches the **ESA official classification**.
-
-
-
-
+### Final Conclusion
+The results demonstrate that the **GMM-based classification is highly reliable** for distinguishing sea ice from leads. The model’s performance is **closely aligned with ESA’s official classification**, making it a valid approach for echo classification in altimetry datasets.
 
 
 
