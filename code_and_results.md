@@ -466,20 +466,19 @@ data_normalized = scaler.fit_transform(data)
 
 # **Altimetry Classification - Preprocessing Functions**
 
-## **Overview**
-Preprocessing the raw waveform data is crucial before using machine learning models to classify Sentinel-3 altimetry data. This stage guarantees that the input features are appropriately organised and classified-optimized. In order to convert waveform features into useful numerical values that can be used to differentiate between leads and sea ice, the following preprocessing functions are helpful.
+## **Preprocessing for Altimetry Classification**
 
-## **Peakiness Calculation**
-By determining the highest peak and quantifying the degree of energy concentration in the waveform, the peakiness function examines the waveform's shape. This function gives information about waveform sharpness by calculating the peak-to-mean ratio, which is helpful for differentiating between surfaces such as sea ice and open ocean. Higher peakiness is typically seen in leads, whereas more dispersed energy distributions are found on rougher ice surfaces.
+Before applying machine learning to classify **Sentinel-3 altimetry data**, preprocessing is essential to ensure the data is structured correctly. The following steps extract meaningful numerical features from waveform data, helping to differentiate between **sea ice and leads**.
 
-## **GPOD Variable Extraction**
-Interpolation is necessary for consistency because various variables in the Sentinel-3 dataset exist at different resolutions. To make sure that all features are properly aligned, the GPOD extraction algorithm resamples low-resolution 1 Hz data to match the 20 Hz high-resolution observations. In order to avoid inconsistencies in time-series analysis and guarantee that the dataset is comprehensive for classification models, this step is essential.
+### **Key Preprocessing Steps**
+- **Peakiness Calculation**: Measures waveform sharpness by analyzing energy concentration. Leads tend to have higher peakiness, while rougher ice surfaces show more dispersed energy.
+- **GPOD Variable Extraction**: Ensures consistency by aligning Sentinel-3 variables, resampling low-resolution data to match high-resolution observations.
+- **Stack Standard Deviation (SSD) Calculation**: Quantifies how spread out the waveform energy is, distinguishing between smooth open water and rough ice surfaces.
 
-## **Stack Standard Deviation (SSD) Calculation**
-The SSD function analyzes the spread of waveform energy by fitting a Gaussian model to the waveform. This provides a numerical measure of how dispersed the energy is, which can help distinguish between smooth open water and rough sea ice surfaces. A higher SSD value generally indicates a more scattered waveform, which is associated with ice-covered regions, while lower values suggest smoother, more reflective surfaces such as leads.
+### **Connecting to the Code**
+After preprocessing, NaN values are removed to clean the dataset. The **Gaussian Mixture Model (GMM)** is then applied to cluster the data into two classes, representing **sea ice and leads**. The resulting clusters provide an unsupervised classification method for altimetry data.
 
-## **Conclusion**
-These preprocessing functions play a crucial role in preparing Sentinel-3 altimetry data for classification tasks. Peakiness quantifies waveform sharpness, GPOD variable extraction ensures data consistency, and SSD provides insight into waveform spread. Together, these steps refine the dataset, making it suitable for unsupervised learning models that classify sea ice and open water.
+This streamlined approach refines the dataset, making it suitable for further analysis and classification.
 
 
 There are some NaN values in the dataset so one way to deal with this is to delete them.
