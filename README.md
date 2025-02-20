@@ -84,9 +84,9 @@ Precision: 1.00 | Recall: 1.00 | F1-score: 1.00 (Sea Ice) Precision: 0.99 | Reca
 ---
 
 ## Conclusion
-This project successfully demonstrates how **unsupervised learning can be applied to classify sea ice and leads** using Sentinel-2 and Sentinel-3 data. The **high classification accuracy (99.6%)** shows that clustering techniques like **K-Means and GMM** can effectively group similar oceanic features.
+This project successfully demonstrates how unsupervised learning can be applied to classify sea ice and leads using Sentinel-2 and Sentinel-3 data. The high classification accuracy (99.6%) shows that clustering techniques like K-Means and GMM can effectively group similar oceanic features.
 
-These methods offer a scalable, automated approach for **remote sensing and environmental monitoring**, reducing the need for manual classification.
+These methods offer a scalable, automated approach for remote sensing and environmental monitoring, reducing the need for manual classification.
 
 ---
 
