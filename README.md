@@ -1,41 +1,102 @@
+# Sea Ice and Lead Classification Using Unsupervised Learning
+
+## Overview
+This project applies **unsupervised machine learning techniques** to classify **sea ice and lead** using **Sentinel-2 and Sentinel-3 satellite data**. The goal is to **automate the classification process** by leveraging **clustering algorithms** such as **K-Means** and **Gaussian Mixture Model (GMM)**.
+
+By processing **altimetry and optical satellite data**, we explore how machine learning can be used to classify oceanic features without labeled data. The results are validated against **ESA’s official classification**.
+
+---
+
+## Objectives
+- **Preprocess satellite data** from Sentinel-2 and Sentinel-3 missions.
+- **Use K-Means and GMM clustering** to classify sea ice and leads.
+- **Visualize waveform characteristics** to compare ice and lead echoes.
+- **Evaluate classification accuracy** using a confusion matrix and a classification report.
+
+---
+
+## Approach
+### 1️⃣ Data Preprocessing
+- Sentinel-2 imagery is **processed and stacked** for clustering.
+- Sentinel-3 waveform data is **filtered and cleaned** for classification.
+
+### 2️⃣ Unsupervised Learning Methods
+- **K-Means Clustering**: Groups data points based on spectral and waveform features.
+- **Gaussian Mixture Model (GMM)**: Uses a probabilistic approach for soft clustering.
+
+### 3️⃣ Visualization & Evaluation
+- **Clustered waveforms** are plotted to analyze sea ice and lead characteristics.
+- **Confusion matrix and classification report** compare model results with ESA’s official classification.
+
+---
+
+## Key Features
+- **Waveform Analysis**: Extracts peakiness, SSD, and other statistical features.
+- **Satellite Image Classification**: Uses unsupervised learning on Sentinel-2 optical data.
+- **Altimetry-Based Classification**: Applies clustering to Sentinel-3 waveforms.
+- **Performance Evaluation**: Assesses classification accuracy with ESA’s dataset.
+
+---
+
+## Results
+- **High accuracy (99.6%)** when compared with ESA’s classification.
+- **Distinct clustering of sea ice and leads**, confirming the effectiveness of the models.
+- **Waveform characteristics** clearly differentiate between ice and lead clusters.
+
+📌 **Sample Confusion Matrix Output:**
 
 
-This project utilizes unsupervised learning methods, including K-means clustering and Gaussian Mixture Models (GMM), to classify satellite imagery into distinct categories of sea ice and leads. The imagery data is sourced from Sentinel-2 and Sentinel-3 satellites, which provide valuable insights into Earth’s polar regions. The purpose of this analysis is to demonstrate the capability of unsupervised learning techniques in identifying and categorizing unlabelled data based on inherent patterns.
-
-Technical Overview
-
-The analysis includes:
-
-K-means Clustering: Segmenting Sentinel-2 optical data to identify distinct regions based on spectral characteristics.
-Gaussian Mixture Models (GMM): Using Sentinel-3 altimetry data for probabilistic classification, improving upon the deterministic methods of K-means.
-Data Preparation: The raw satellite data is preprocessed to include only relevant spectral bands and remove noise or corrupt data points, ensuring high-quality inputs for the models.
-Visualization: Post-classification results are visualized to assess the accuracy and to provide intuitive graphical representations of the classified data.
+📌 **Classification Report Summary:**
 
 
-Step 1: Mount Google Drive
-This allows your Google Colab environment to access files stored in your Google Drive.
 
-Step 2: Install Required data
-Ensure all required Python libraries and data are installed. These libraries are necessary for handling data, performing analyses, and visualizing results.
+---
+
+## How to Run the Code
+### **Colab / Local Setup**
+1. **Mount Google Drive** (if running in Google Colab)
+    ```python
+    from google.colab import drive
+    drive.mount('/content/drive')
+    ```
+2. **Install Dependencies**
+    ```sh
+    pip install rasterio
+    ```
+
+3. **Run the Notebook**
+   - Execute the notebook step by step.
+   - The classification results will be generated automatically.
+
+---
+
+## Repository Structure
 
 
-Step 3: Load and Preprocess the Data
-Load the satellite data using rasterio and preprocess it to format the data for analysis. This typically includes reading specific bands, masking non-data regions, and normalizing or scaling the data.
+---
 
-Step 5: Apply Machine Learning Models
-Implement the K-means clustering and Gaussian Mixture Model to classify the data.
+## Sample Visualizations
+### **K-Means Clustering Output**
+![K-Means Clustering](https://github.com/Ivan123yoo/Assignment-4./blob/main/images/kmeans_clustering_output.png?raw=true)
 
-Step 6: Visualize the Results
-Plot the results using matplotlib to visualize the classification outputs, helping to assess the performance of your models visually.
+### **GMM Clustering Output**
+![GMM Clustering](https://github.com/Ivan123yoo/Assignment-4./blob/main/images/Gaussian%20mixture%20model.png?raw=true)
 
-Step 7: Analyze and Interpret the Results
-Evaluate the effectiveness of the models in classifying the types of surfaces and discuss the results based on the visual outputs and any additional statistical analyses conducted.
+### **Waveform Analysis**
+![Waveform](https://github.com/Ivan123yoo/Assignment-4./blob/main/images/np.stack.png?raw=true)
+
+---
+
+## Conclusion
+This project successfully demonstrates how **unsupervised learning can be applied to classify sea ice and leads** using Sentinel-2 and Sentinel-3 data. The **high classification accuracy (99.6%)** shows that clustering techniques like **K-Means and GMM** can effectively group similar oceanic features.
+
+These methods offer a scalable, automated approach for **remote sensing and environmental monitoring**, reducing the need for manual classification.
+
+---
+
+## References
+- European Space Agency (ESA) Sentinel Data: [ESA Sentinel Hub](https://www.sentinel-hub.com/)
+- [scikit-learn](https://scikit-learn.org/stable/modules/clustering.html) for K-Means & GMM
+- Unsupervised Learning Methods: {cite}`bishop2006pattern`
 
 
-Results
-The output consists of cluster maps and probability distributions for sea ice and leads, demonstrating the effective use of unsupervised learning in environmental satellite data analysis.
-
-Credits
-
-Data Sources: European Space Agency (ESA) for providing Sentinel-2 and Sentinel-3 imagery.
-Supervisory Support: Provided by 
