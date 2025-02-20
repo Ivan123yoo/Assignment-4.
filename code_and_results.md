@@ -287,7 +287,7 @@ Before we can apply classification methods, we must preprocess the data by extra
 
 ## **1. Preprocessing Functions for Feature Extraction**
 
-These functions **prepare the dataset** by computing waveform properties, ensuring proper interpolation of variables, and calculating statistical features.
+These functions prepare the dataset by computing waveform properties, ensuring proper interpolation of variables, and calculating statistical features.
 
 ### **Peakiness Calculation**
 This function determines the **peakiness of waveform signals**, helping differentiate between different surface types in the Sentinel-3 dataset.
